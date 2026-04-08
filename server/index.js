@@ -21,6 +21,12 @@ mongoose.connect('mongodb+srv://kamranhassan20044_db_user:kamran123@cluster0.5sr
   .catch(err => console.log("MongoDB connection error:", err));
 
 // ROUTES
+app.get("/", (req, res) => {
+
+    res.json("Hello! Backend is running successfully.");
+
+});
+
 app.get('/get', (req, res) => {
   todoModel.find()
     .then(result => res.json(result))
