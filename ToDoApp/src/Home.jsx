@@ -9,13 +9,13 @@ const Home = () => {
   const [updatedTask, setUpdatedTask] = useState("");
 
   useEffect(() => {
-    axios.get('http://localhost:5000/get')
+    axios.get(`${import.meta.env.VITE_REACT_URL}/get`)
       .then(result => setTodos(result.data))
       .catch(err => console.log(err))
   }, []);
 
   const handleDelete = (id) => {
-    axios.delete(`${import.meta.env.Vite_React_Backend_Url}/delete/${id}`)
+    axios.delete(`${import.meta.env.VITE_REACT_URL}/delete/${id}`)
       .then(() => {
         setTodos(Todos.filter(todo => todo._id !== id))
       })
@@ -27,7 +27,7 @@ const Home = () => {
   }
 
   const handleUpdate = () => {
-    axios.put(`${import.meta.env.Vite_React_Backend_Url}/update/${editingTodo._id}`, { task: updatedTask })
+    axios.put(`${import.meta.env.VITE_REACT_URL}/update/${editingTodo._id}`, { task: updatedTask })
       .then(() => {
         setTodos(Todos.map(todo =>
           todo._id === editingTodo._id

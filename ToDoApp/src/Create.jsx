@@ -8,7 +8,7 @@ const Create = ({ onAdd }) => {
   const handleAdd = () => {
     if (!task.trim()) return;
 
-    axios.post(`${import.meta.env.Vite_React_Backend_Url}/add`, { task })
+    axios.post(`${import.meta.env.VITE_REACT_URL}/add`, { task })
       .then(result => {
         setTask(""); // clear input
 
